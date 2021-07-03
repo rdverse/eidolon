@@ -7,4 +7,5 @@ const app = express();
 app.get('/',  (req,res)=>  {
 res.send({ hi : "sdfa"});
 });
-app.listen(5500);
+const PORT = process.env.PORT | 5000;
+app.listen(PORT);
