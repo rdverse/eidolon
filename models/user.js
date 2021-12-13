@@ -4,7 +4,7 @@ const {Schema} = mongoose;
 
 
 const userSchema = Schema({
-googleID : String,
+googleID : String
 });
 
 mongoose.model('users', userSchema);
