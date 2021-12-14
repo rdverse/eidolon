@@ -1,7 +1,6 @@
 # dont commit these
 keys.js
-config/*
-config/keys.js
+dev.js
 
 
 # Logs
