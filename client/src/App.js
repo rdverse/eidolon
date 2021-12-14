@@ -6,16 +6,35 @@ function App() {
     <div className="App">
       <header className="App-header-aaa">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        
+        {/* <p>
           Edit <code>src/App.js</code> aaaaand save to reload.
-        </p>
+        </p> */}
+
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="/auth/google"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Google-sign-in
+        </a>
+...........................
+        <a
+          className="App-link"
+          href="/api/current_user"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          check-user
+        </a>
+        <a
+          className="App-link"
+          href="/api/logout"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+      logout
         </a>
       </header>
     </div>
