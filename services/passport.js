@@ -20,27 +20,27 @@ passport.deserializeUser((id, done)=>{
 });
 
 
-passport.use(new googleStrategy({
+passport.use(
+    new googleStrategy({
     clientID : keys.googleClientID,
     clientSecret : keys.googleClientSecret,
     callbackURL : '/auth/google/callback',
     proxy:true
-        }, (accessToken, refreshToken, profile, done) => {
+        },
+    async (accessToken, refreshToken, profile, done) => {
             console.log(accessToken, refreshToken,profile,done);
             // console.log("ssssss");
             console.log(profile.id);
-            User.findOne({googleID : profile.id})
-                .then((existingUser)=>{
-                if(existingUser){
+            const existingUser = await User.findOne({googleID : profile.id});
+
+            if(existingUser){
                 console.log("User exists");
                 done(null,existingUser);
                 }
                 else{
-                    new User({googleID : profile.id})
-                        .save()
-                        .then((createdUser)=>{done(null,createdUser)});
+                    const createdUser = new User({googleID : profile.id}).save()
+                    done(null,createdUser);
                 }
-            })
         }
     )   
 );
