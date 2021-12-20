@@ -1,3 +1,6 @@
+// checkout circleci for continuous integration and testing
+
+
 //common js modules
 const express = require('express');
 // import express from 'express' es25 modules
@@ -5,7 +8,8 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 //for cookie
 const passport = require('passport');
-const  keys = require('./config/keys')
+const  keys = require('./config/keys');
+const req = require('express/lib/request');
 require('./models/user');
 require('./services/passport');
 
@@ -30,6 +34,17 @@ mongoose.connect(keys.mongoURI)
 // app.get('/',  (req,res)=>  {
 // res.send({ hi : "sdfa"});
 // });
+
+if(process.NODE_ENV=="production"){
+    // in production, direct react to the client assests
+    app.use(express.static("client/build"));
+
+    // send the client index html
+    const path = require('path');
+    app.get('*', (req,res)=>{
+res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 const PORT =  process.env.PORT || 2000;
 app.listen(PORT, () => {console.log(`APp is up and running at PORT : ${PORT}`);});
