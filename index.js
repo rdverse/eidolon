@@ -35,7 +35,7 @@ mongoose.connect(keys.mongoURI)
 // res.send({ hi : "sdfa"});
 // });
 
-if(process.NODE_ENV=="production"){
+if(process.env.NODE_ENV=="production"){
     // in production, direct react to the client assests
     app.use(express.static("client/build"));
 
