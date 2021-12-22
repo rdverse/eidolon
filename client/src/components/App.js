@@ -7,7 +7,7 @@ import * as actions from '../actions';
 import Header from './header';
 import Welcome from './welcome';
 // const Header = () => <h1>Main webpage</h1>;
-const Dashboard = () => <h2>Dashboard</h2>;
+const Dashboard = () => <h2>Dashboards</h2>;
 const FormsNew = () => <h2>User is :</h2>;
 // const Welcome = () => <h2>Welcome</h2>;
 
